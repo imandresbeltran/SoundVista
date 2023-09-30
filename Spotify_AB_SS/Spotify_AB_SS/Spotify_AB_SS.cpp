@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-#pragma region Menú interfaz
+#pragma region Menï¿½ interfaz
 	menu:
 	int opcion;
 	cout << "-----------------------------------SPORIFY-------------------------------------\nPorfavor Seleccione una opcion"<< endl; 
@@ -20,9 +20,9 @@ int main()
 		break;
 	case 2: cout << "Reproducir Canciones";
 		break;
-	default:cout << "Opción no válida, vuelte a intentar. Presione cualquier tecla para continuar" << endl;
+	default:cout << "Opciï¿½n no vï¿½lida, vuelte a intentar. Presione cualquier tecla para continuar" << endl;
 		cin.get();
-		system("cls");//esto Limpiará la consola
+		system("cls");//esto Limpiarï¿½ la consola
 		goto menu;//Llevara devuelta al usuario al principio del menu
 		break;
 	}

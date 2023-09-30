@@ -10,7 +10,7 @@ public:
 	CDManager();
 
 	void cargarRespaldos(const std::string& rutaCarpeta);
-	void agregarCanciones();
+	void agregarCancion();
 	void verColaReproduccion();
 	void reproduccionActual();
 	void reproducirSiguiente();
