@@ -10,7 +10,7 @@ public:
 	string artist;
 	string duration;
 
-	Song(const string& Name, const string& Artist, const string& Duration) : name(Name), artist(Artist), duration(Duration) {}
+	Song(const string& Name, const string& Artist, const string& Duration) {}
 };
 
 
@@ -20,16 +20,13 @@ public:
 	string name;
 	vector<Song> songs;
 
-	CD(const string& Name) : name(Name) {}
+	CD(const string& Name){}
 
-	void addSong(const Song& song) {
-		songs.push_back(song);
-	}
+
 
 	vector<string> getSongNames() const {
 		vector<string> songNames;
 
-		for (const auto& song : songs) songNames.push_back(song.name);
 
 		return songNames;
 	}

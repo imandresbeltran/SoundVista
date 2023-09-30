@@ -127,10 +127,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CD.cpp" />
     <ClCompile Include="CDManager.cpp" />
     <ClCompile Include="Spotify_AB_SS.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CD.h" />
     <ClInclude Include="CDManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
