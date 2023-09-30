@@ -22,13 +22,5 @@ public:
 
 	CD(const string& Name){}
 
-
-
-	vector<string> getSongNames() const {
-		vector<string> songNames;
-
-
-		return songNames;
-	}
 };
 
