@@ -3,17 +3,13 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include "CD.h"
 
 class CDManager
 {
 public:
-	CDManager();
+	std::vector<CD> cds;
 
-	void cargarRespaldos(const std::string& rutaCarpeta);
-	void agregarCancion();
-	void verColaReproduccion();
-	void reproduccionActual();
-	void reproducirSiguiente();
-	void ordenarCola();
+	void loadBackups(std::string folderPath);
 };
 
