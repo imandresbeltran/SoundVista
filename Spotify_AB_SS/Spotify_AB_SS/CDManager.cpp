@@ -26,7 +26,7 @@ void CDManager::loadBackups(std::string folderPath) {
 				break;
 			}
 
-			cd.addSong(Cancion(name, artist, duration));
+			//cd.addSong(Cancion(name, artist, duration));
 
 			if (!cd.songs.empty()) cds.push_back(cd);
 			else std::cout << "Error: archivo vacío: " << entry.path() << std::endl;

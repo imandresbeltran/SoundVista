@@ -2,9 +2,15 @@
 #include <cstdlib>
 #include <time.h>
 #include <fstream>
+#include <filesystem>
 #include <sstream>
 #include <windows.h>
 #include <limits>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+
 #include "CDManager.h"
 
 void reproductor_Canciones() {
@@ -69,6 +75,7 @@ int main()
 	switch (opcion)
 	{
 	case 1: std::cout<<"Haz seleccionado Cargar respaldo de archivos\n";
+
 		break;
 
 	case 2: std::cout << "Haz seleccionado Reproducir Canciones\n";
@@ -91,8 +98,6 @@ int main()
 	}
 #pragma endregion
 
-
-#pragma region agregarCD
 	CDManager collection;
 
 	std::string folderPath;
@@ -101,8 +106,11 @@ int main()
 
 	collection.loadBackups(folderPath);
 
+
+	
+
 	return 0;
-#pragma endregion
+
 
 	
     
