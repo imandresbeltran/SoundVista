@@ -3,7 +3,7 @@
 #include <sstream>
 #include <filesystem>
 #include <iostream>
-
+/*
 
 void CDManager::loadBackups(std::string folderPath) {
 	for (const auto& entry : std::filesystem::directory_iterator(folderPath)) {
@@ -32,4 +32,4 @@ void CDManager::loadBackups(std::string folderPath) {
 			else std::cout << "Error: archivo vacío: " << entry.path() << std::endl;
 		}
 	}
-}
+}*/

@@ -6,10 +6,11 @@
 class CD
 {
 public:
-	std::string name;
+	std::string nameCD;
 	std::vector<Cancion> songs;
 
-	CD(std::string Name);
-	void addSong(Cancion c);
+
+	/*CD(std::string Name);
+	void addSong(Cancion c);*/
 };
 

@@ -9,11 +9,104 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <string>
+
+//#include "CDManager.h"
+
+using namespace std;
+
+class Cancion {
+	string name;
+	string artist;
+	string duration;
+};
+
+class CD {
+public:
+	string nameCD;
+	vector<Cancion> songs;
+};
+class MP3
+{
+	vector<CD>CDs;
+	vector<Cancion>Cola;
+	Cancion* reproduciendo = nullptr;
+
+public:
+	MP3(){}
+	void cargandoRespaldos() {
+		
+		cout << "Porfavor ingrese la ruta de la carpeta de respaldos:" << endl;
+		string direccion;
+		cin.ignore();
+		getline(cin, direccion);
+		/*vector<string>archivos = listarArchivos(direccion);
+		if (archivos.empty()) {
+			cout << "No se encontró ningun archivo en la ruta brindada.\n" << endl;
+			return;
+		}*/
+
+		/*for (const auto& archivo : archivos)
+		{
+			cout << "Procesando CD..." << archivo << endl;
+			CD cd = cargarCDs(direccion + "/" + archivo);
+			if (!cd.nameCD.empty())
+			{
+				CDs.push_back(cd); cout << "Archivo: " << cd.nameCD << ", encontrado." << endl;
+				Sleep(2000);
+			}
+			else {
+				cout << "¡¡¡Archivo cargado incorrectamente!!!: " << archivo << endl;
+			}
+		}*/
 
 
-#include "CDManager.h"
+		/*CD cargarCDs(const string & ruta_de_archivo) {
+			ifstream archivo(ruta_de_archivo);
+			if (!archivo.is_open())
+			{
+				throw runtime_error("El archivo solicitado no pudo abrirse: " + ruta_de_archivo)
+			}
+			CD cd;
+			cd.nameCD = filesystem::path(ruta_de_archivo).filename().replace_extension().string();
+			string linea;
+			while (getline(archivo,linea))
+			{
+				stringstream ss(linea);
+				string nombre, artista, duracion;
+				getline(ss, nombre, '|');
+				getline(ss, nombre, '|');
+				getline(ss, nombre, '|');
+
+				Cancion song;
+				song.name = name;
+				song.artist=artist;
+
+				cd.songs.push_back(songs);
+			}
+			archivo.close();
+			return cd;
+		}*/
+		
+
+		/*vector<string>listarArchivos(const string& direccion); {
+			vector<string>archivos;
+			for (const auto& entry : filesystem::directory_iterator(direccion))
+			{
+				if (entry.is_regular_file() && entry.path().extension() == ".txt") {
+					archivos.push_back(entry.path().filename().string());
+				}
+			}
+			return archivos;
+		}*/		
+	}
+
+};
+
+
 
 void reproductor_Canciones() {
+	
 	menu2:
 	int opcion;
 	std::cout << "\t1. Agregar Cancion." << std::endl;
@@ -25,7 +118,8 @@ void reproductor_Canciones() {
 	std::cout << "Elige una opcion:" << std::endl; std::cin >> opcion;
 	switch (opcion)
 	{
-	case 1:std::cout << "Haz seleccionado agregar Canción." << std::endl;
+	case 1:std::cout << "Haz seleccionado agregar Canción." << std::endl;	
+		
 		// Pausar y esperar que el usuario presione enter para continuar
 		/*std::cout << "\nPresione ENTER para continuar...";
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -57,6 +151,7 @@ void reproductor_Canciones() {
 
 int main()
 {
+	MP3 reproductor;
 #pragma region Menu interfaz
 	menu:
 	int opcion;
@@ -75,7 +170,9 @@ int main()
 	switch (opcion)
 	{
 	case 1: std::cout<<"Haz seleccionado Cargar respaldo de archivos\n";
-
+		Sleep(2000);
+		system("cls");//esto Limpiara la consola
+		reproductor.cargandoRespaldos();
 		break;
 
 	case 2: std::cout << "Haz seleccionado Reproducir Canciones\n";
@@ -97,7 +194,7 @@ int main()
 		
 	}
 #pragma endregion
-
+/*
 	CDManager collection;
 
 	std::string folderPath;
@@ -105,8 +202,8 @@ int main()
 	std::getline(std::cin, folderPath);
 
 	collection.loadBackups(folderPath);
-
-
+	*/
+	
 	
 
 	return 0;
