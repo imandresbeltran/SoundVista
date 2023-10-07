@@ -8,8 +8,9 @@ public:
 	std::string artist;
 	std::string duration;
 
-	Cancion(std::string Name, std::string Artist, std::string Duration);
+	Cancion() = default; //Agregamos un constructor predeterminado
 
-	bool operator == (const Cancion& other) const;
+	Cancion(std::string Name, std::string Artist, std::string Duration)
+		: name(Name), artist(Artist), duration(Duration) {}
 };
 

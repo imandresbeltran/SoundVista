@@ -1,35 +1,36 @@
 #include "CDManager.h"
 #include <fstream>
 #include <sstream>
-#include <filesystem>
+#include <algorithm>
 #include <iostream>
-/*
+#include <filesystem>
 
-void CDManager::loadBackups(std::string folderPath) {
-	for (const auto& entry : std::filesystem::directory_iterator(folderPath)) {
-		std::ifstream inFile(entry.path());
+namespace fs = std::filesystem;
 
-		if (!inFile) {
-			std::cout << "Error al abrir el archivo: " << entry.path() << std::endl;
-			continue;
-		}
+using namespace std;
 
-		CD cd(entry.path().filename().string());
-		std::string line;
+CDManager::CDManager() {}
 
-		while (std::getline(inFile, line)) {
-			std::istringstream ss(line);
-			std::string name, artist, duration;
+void CDManager::cargarRespaldos(const string& rutaCarpeta) {
+	listaCDs.clear();
+    cout << "Ruta de carpeta cargada: " << rutaCarpeta << endl;
+}
+void CDManager::agregarCancion() {
+    // Implementar la función para agregar una canción a la cola de reproducción
+}
 
-			if (!std::getline(ss, name, '|') || !std::getline(ss, artist, '|') || !std::getline(ss, duration, '|')) {
-				std::cout << "Formato de línea incorrecto en el archivo: " << entry.path() << std::endl;
-				break;
-			}
+void CDManager::verColaReproduccion() {
+    // Implementar la función para ver la cola de reproducción
+}
 
-			//cd.addSong(Cancion(name, artist, duration));
+void CDManager::reproduccionActual() {
+    // Implementar la función para mostrar la reproducción actual
+}
 
-			if (!cd.songs.empty()) cds.push_back(cd);
-			else std::cout << "Error: archivo vacío: " << entry.path() << std::endl;
-		}
-	}
-}*/
+void CDManager::reproducirSiguiente() {
+    // Implementar la función para reproducir la siguiente canción
+}
+
+void CDManager::ordenarCola() {
+    // Implementar la función para ordenar la cola de reproducción
+}

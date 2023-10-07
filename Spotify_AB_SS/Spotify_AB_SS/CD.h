@@ -2,15 +2,28 @@
 
 #include <vector>
 #include "Cancion.h"
+#include <string>
 
 class CD
 {
 public:
-	std::string nameCD;
+	std::string name;
 	std::vector<Cancion> songs;
 
+	CD(const std::string& n) :  name(n){}
 
-	/*CD(std::string Name);
-	void addSong(Cancion c);*/
+	void addSong(const Cancion& cancion) {
+		songs.push_back(cancion);
+	}
+
+	std::vector<std::string> getSongNames() const {
+		std::vector<std::string> songNames;
+
+		for (const auto& song : songs) {
+			songNames.push_back(song.name);
+		}
+
+		return songNames;
+	}
 };
 
