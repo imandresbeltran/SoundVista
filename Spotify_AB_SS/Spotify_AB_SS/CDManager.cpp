@@ -114,17 +114,145 @@ void CDManager::agregarCancion() {
 }
 
 void CDManager::verColaReproduccion() {
-    // Implementar la función para ver la cola de reproducción
+    if (colaReproduccion.empty()) cout << "La cola de reproducción está vacía" << endl;
+    else {
+        int opcion;
+        cout << "Seleccione una opción:" << endl;
+        cout << "1. Ver la cola de reproducción actual" << endl;
+        cout << "2. Ver la cola de reproducción ordenada por nombre del artista" << endl;
+        cout << "3. Ver la cola de reproducción ordenada por nombre de la canción" << endl;
+        cout << "4. Ver la cola de reproducción ordenada por duración" << endl;
+        cout << "Ingrese el número de la opción: ";
+        cin >> opcion;
+
+        vector<Cancion> colaMostrada = colaReproduccion;
+
+        switch (opcion)
+        {
+        case 1:
+            cout << "Cola de reproducción actual: " << endl;
+            break;
+
+        case 2:
+            sort(colaMostrada.begin(), colaMostrada.end(), [](const Cancion& a, const Cancion& b) {
+                return a.artist < b.artist;
+                });
+            cout << "Cola de reproducción ordenada por nombre del artista:" << endl;
+            break;
+
+        case 3:
+            sort(colaMostrada.begin(), colaMostrada.end(), [](const Cancion& a, const Cancion& b) {
+                return a.name < b.name;
+                });
+            cout << "Cola de reproducción ordenada por nombre de la canción:" << endl;
+            break;
+
+        case 4:
+            sort(colaMostrada.begin(), colaMostrada.end(), [](const Cancion& a, const Cancion& b) {
+                return a.duration < b.duration;
+                });
+            cout << "Cola de reproducción ordenada por duración:" << endl;
+            break;
+
+        default:
+            cout << "Opcion no válida. " << endl;
+                return;
+        }
+
+        for(const Cancion& cancion : colaMostrada) cout << cancion.name << " - " << cancion.artist << " - " << cancion.duration << endl;
+    }
 }
 
 void CDManager::reproduccionActual() {
-    // Implementar la función para mostrar la reproducción actual
+    if (!colaReproduccion.empty()) {
+        const Cancion& cancionEnReproduccion = colaReproduccion.front();
+        cout << "Reproduciendo:" << endl;
+        cout << "Nombre: " << cancionEnReproduccion.name << endl;
+        cout << "Artista: " << cancionEnReproduccion.artist << endl;
+        cout << "Duración: " << cancionEnReproduccion.duration << endl;
+
+        for (const CD& cd : listaCDs) {
+            for (const Cancion& song : cd.songs) {
+                if (song.name == cancionEnReproduccion.name && song.artist == cancionEnReproduccion.artist) {
+                    cout << "CD: " << cd.name << endl;
+                    break;
+                }
+            }
+        }
+    }
+    else {
+        cout << "Reproducción en Pausa. La cola de reproducción está vacía." << endl;
+    }
 }
 
 void CDManager::reproducirSiguiente() {
-    // Implementar la función para reproducir la siguiente canción
+    if (!colaReproduccion.empty()) {
+        Cancion siguienteCancion = colaReproduccion.front();
+
+        cout << "Reproducíedno siguiente canción: " << endl;
+        cout << "Nombre: " << siguienteCancion.name << endl;
+        cout << "Artista: " << siguienteCancion.artist << endl;
+        cout << "Duración: " << siguienteCancion.duration << endl;
+
+        colaReproduccion.push_back(siguienteCancion);
+        colaReproduccion.erase(colaReproduccion.begin());
+    } else cout << "La cola de reproducción está vacía. No hay canciones para reproducir." << endl;
 }
 
 void CDManager::ordenarCola() {
-    // Implementar la función para ordenar la cola de reproducción
+    if (!colaReproduccion.empty()) {
+        int opcion;
+        cout << "Seleccione una opción para ordenar la cola:" << endl;
+        cout << "1. Ordenar por nombre del artista (ascendente)" << endl;
+        cout << "2. Ordenar por nombre del artista (descendente)" << endl;
+        cout << "3. Ordenar por nombre de la canción (ascendente)" << endl;
+        cout << "4. Ordenar por nombre de la canción (descendente)" << endl;
+        cout << "5. Ordenar por duración (ascendente)" << endl;
+        cout << "6. Ordenar por duración (descendente)" << endl;
+        cout << "Ingrese el número de la opción: ";
+        cin >> opcion;
+
+        switch (opcion)
+        {
+        case 1:
+            sort(colaReproduccion.begin(), colaReproduccion.end(), [](const Cancion& a, const Cancion& b) {
+                return a.artist < b.artist;
+                });
+            cout << "Cola de reproducción ordenada por nombre del artista (ascendente)." << endl;
+            break;
+        case 2:
+            sort(colaReproduccion.begin(), colaReproduccion.end(), [](const Cancion& a, const Cancion& b) {
+                return a.artist > b.artist;
+                });
+            cout << "Cola de reproducción ordenada por nombre del artista (descendente)." << endl;
+            break;
+        case 3:
+            sort(colaReproduccion.begin(), colaReproduccion.end(), [](const Cancion& a, const Cancion& b) {
+                return a.name < b.name;
+                });
+            cout << "Cola de reproducción ordenada por nombre de la canción (ascendente)." << endl;
+            break;
+        case 4:
+            sort(colaReproduccion.begin(), colaReproduccion.end(), [](const Cancion& a, const Cancion& b) {
+                return a.name > b.name;
+                });
+            cout << "Cola de reproducción ordenada por nombre de la canción (descendente)." << endl;
+            break;
+        case 5:
+            sort(colaReproduccion.begin(), colaReproduccion.end(), [](const Cancion& a, const Cancion& b) {
+                return a.duration < b.duration;
+                });
+            cout << "Cola de reproducción ordenada por duración (ascendente)." << endl;
+            break;
+        case 6:
+            sort(colaReproduccion.begin(), colaReproduccion.end(), [](const Cancion& a, const Cancion& b) {
+                return a.duration > b.duration;
+                });
+            cout << "Cola de reproducción ordenada por duración (descendente)." << endl;
+            break;
+        default:
+            cout << "Opción no válida." << endl;
+            return;
+        }
+    }
 }
