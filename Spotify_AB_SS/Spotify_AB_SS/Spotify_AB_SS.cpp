@@ -9,13 +9,17 @@ int main() {
 
     // Solicitar al usuario la ruta de la carpeta de respaldos
     cout << "Ingrese la ruta de la carpeta de respaldos: ";
-    cin >> rutaCarpeta;
-
+    if (!(cin >> rutaCarpeta)) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');//Esto limita y limpia el buffer de entrada
+        cout << "\nEentrada inválida. Intente de nuevo." << endl;
+    }
+    
     // Cargar los respaldos desde la carpeta especificada
     cdManager.cargarRespaldos(rutaCarpeta);
 
     // Bucle principal del programa
-    int opcion;
+    int opcion = 0;
     do {
         cout << "\nMenú de Reproductor de Canciones:" << endl;
         cout << "1. Agregar Canción" << endl;
@@ -25,7 +29,13 @@ int main() {
         cout << "5. Ordenar Cola" << endl;
         cout << "6. Salir" << endl;
         cout << "Seleccione una opción: ";
-        cin >> opcion;
+        
+        if (!(cin >> opcion)) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');//Esto limita y limpia el buffer de entrada
+            cout << "\nEentrada inválida. Intente de nuevo." << endl;
+            continue;//Esto lo regresa al principio del bucle
+        }
 
         switch (opcion) {
         case 1:
